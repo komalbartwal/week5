@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>User</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style type="text/css">
+	*{
+		margin: 10px;
+	}
+	body{
+		background-color: lightblue;
+	}
+	.container{
+		align-items: center;
+		font-family: "Roboto",sans-serif;
+		outline: 2;
+		padding: 15px;
+		box-sizing: border-box;
+		background-color: lightpink;
+	}
+	input{
+		display: block;
+		margin-bottom: 25px;
+		width: 100%;
+		border: 2px solid steelblue;
+	}
+	#btn{
+		border-radius: 14px;
+		background-color: blue;
+	}
+
+</style>
+</head>
+<body>
+	<form ng-app="user" ng-controller="usercontroller" name="form">
+		<div class="container">
+				<div class="row">
+					<div class='col-4'>
+						<img src="images/profile.jpg" style="width: 200px; height: 200px;">
+					</div>
+					<div class="col-4">
+						<h1>User Information</h1>
+						<label>First Name</label>
+						<input type="text" name="name" placeholder="First Name" ng-model="Fname" required />
+					    <br>
+					    <label>Last Name</label>
+						<input type="text" name="lname" placeholder="Last Name" ng-model="Lname" required />
+						<br>
+						<label>Email</label>
+						<input type="email" name="email" placeholder="Email" ng-model="Email" required />
+						<br>
+						<label>Phone no</label>
+						<input type="text" name="phone" placeholder="Phone no" ng-model="Phone" required />
+						<br>
+						<label>City</label>
+						<input type="text" name="city" placeholder="City" ng-model="City" required /><br>
+						
+						<button id="btn" ng-click="edit()" ng-disable="e">Submit</button>
+
+					</div>
+				</div>
+		</div>
+	</form>
+			
+<script type="text/javascript">
+	var app = angular.module("user",[]);
+        app.controller('usercontroller',function($scope){
+        	var username=localStorage.getItem('n');
+        	var userlname=localStorage.getItem('l');
+        	var useremail=localStorage.getItem('e');
+        	var userphone=localStorage.getItem('p');
+        	var usercity=localStorage.getItem('c');
+
+        	$scope.Fname=username;
+        	$scope.Lname=userlname;
+        	$scope.Email=useremail;
+        	$scope.Phone=userphone;
+        	$scope.City=usercity;
+
+        	$scope.edit=function(){
+        		localStorage.setItem('n',$scope.Fname);
+            localStorage.setItem('l',$scope.Lname);
+            localStorage.setItem('e',$scope.Email);
+            localStorage.setItem('p',$scope.Phone);
+            localStorage.setItem('c',$scope.City); 
+         
+
+        	}
+        });
+
+
+
+        		
+       
+        
+</script>
+</body>
+</html>
